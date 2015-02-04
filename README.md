@@ -14,4 +14,4 @@ If you're not a programmer, but just want to use these scripts in photoshop...
 
 # Frames To Layer Comps
 
-A talented friend of mine needed a tool for turning a bunch of frames from the animation timeline into layer comps.  
+A script for turning a bunch of frames from the animation timeline into layer comps.  Originally written for Glenn Harmon.  
