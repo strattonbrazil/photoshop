@@ -10,7 +10,7 @@ If you're not a programmer, but just want to use these scripts in photoshop...
 * click on the "Raw" button to see just the file (no github controls)
 * right-click and select "Save as..." or go to the main menu and select "Save page as..." or hit Ctrl+s
 * save the file in your photoshop scripts directory (usually "Presets/Scripts")
-** the file name is the command you see in the menu
+  * the file name is the command you see in the menu
 
 # Frames To Layer Comps
 
