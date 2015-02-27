@@ -12,6 +12,10 @@ If you're not a programmer, but just want to use these scripts in photoshop...
 * save the file in your photoshop scripts directory (usually "Presets/Scripts")
   * the file name is the command you see in the menu
 
-# Frames To Layer Comps
+# Frames to Layer Comps
 
 A script for turning a bunch of frames from the animation timeline into layer comps.  Originally written for Glenn Harmon.  
+
+# Frames to PSDs
+
+A script for turning a bunch of frames from the animation timeline into individual PSD files.  User choose the destination directory.  Hidden frames are removed per PSD file.  Originally written for Andy Erekson.  
