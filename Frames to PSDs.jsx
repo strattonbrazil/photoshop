@@ -34,62 +34,48 @@ function deleteCurrentFrame() {
     executeAction( idDlt, desc6, DialogModes.NO );
 }
 
-function removeHiddenLayers(layerNode) {
-    for (var i = 0; i < layerNode.length; i++) {
-        removeHiddenLayers(layerNode[i].layerSets);
-        
-        var layersToRemove = [];
-        for (var layerIndex = 0; layerIndex < layerNode[i].artLayers.length; layerIndex++) {
-            var layer = layerNode[i].artLayers[layerIndex];
-            alert("processing layer: " + layer);
-            if (!layer.visible) {
-                alert("scheduling for removal!");
-                layersToRemove.push(layer);
-            }
-        }
-    
-        for (var j = 0; j < layersToRemove.length; j++) {
-            layersToRemove[j].remove();
-            alert("layer removed!");
-        }
-    }
+function deleteHiddenLayers() {
+    // =======================================================
+    var idDlt = charIDToTypeID( "Dlt " );
+    var desc2 = new ActionDescriptor();
+    var idnull = charIDToTypeID( "null" );
+    var ref1 = new ActionReference();
+    var idLyr = charIDToTypeID( "Lyr " );
+    var idOrdn = charIDToTypeID( "Ordn" );
+    var idhidden = stringIDToTypeID( "hidden" );
+    ref1.putEnumerated( idLyr, idOrdn, idhidden );
+    desc2.putReference( idnull, ref1 );
+    executeAction( idDlt, desc2, DialogModes.NO );
 }
 
-var dstFolder = Folder.selectDialog ("Select folder where files will be saved");
-if (dstFolder != null) {
+var mainDocument = app.activeDocument;
 
-    var mainDocument = app.activeDocument;
-
-    for (var i = 0; i < numFrames; i++) {
-        jumpToFrame(i+1);
+for (var i = 0; i < numFrames; i++) {
+    jumpToFrame(i+1);
  
-        var frameDocument = mainDocument.duplicate("frame_" + (i+1));
-        app.activeDocument = frameDocument;
+    var frameDocument = mainDocument.duplicate("frame_" + (i+1));
+    app.activeDocument = frameDocument;
     
-        // remove frames before
-        jumpToFrame(1); // jump to first frame
-        for (var j = 0; j < i; j++) {
-            deleteCurrentFrame();
-        }
-    
-        // remove frames after
-        for (var j = 0; j < numFrames - i - 1; j++) { // just for counting
-            jumpToFrame(2);
-            deleteCurrentFrame();
-        }
-
-        // delete hidden layers
-        //for (var j = 0; j < frameDocument.layerSets.length; j++) {
-          //  var layerSet = frameDocument.layerSets[j];
-         //   removeHiddenLayers(layerSet);
-        //}
-        removeHiddenLayers(frameDocument.layerSets);
-        
-        var outFile = new File(dstFolder + "/frame_" + (i+1));
-        frameDocument.saveAs(outFile);
-        //frameDocument.close();
-    
-        // return to original document
-        app.activeDocument = mainDocument;
+    // remove frames before
+    jumpToFrame(1); // jump to first frame
+    for (var j = 0; j < i; j++) {
+        deleteCurrentFrame();
     }
+    
+    // remove frames after
+    for (var j = 0; j < numFrames - i - 1; j++) { // just for counting
+        jumpToFrame(2);
+        deleteCurrentFrame();
+    }
+
+    deleteHiddenLayers();
+
+    var outFile = new File(mainDocument.path + "/frame_" + (i+1));
+    frameDocument.saveAs(outFile);
+    frameDocument.close();
+    
+    // return to original document
+    app.activeDocument = mainDocument;
 }
+
+alert("Files saved to " + mainDocument.path + "/frame_*.psd");
