@@ -14,8 +14,16 @@ If you're not a programmer, but just want to use these scripts in photoshop...
 
 # Frames to Layer Comps
 
-A script for turning a bunch of frames from the animation timeline into layer comps.  Originally written for Glenn Harmon.  
+A script for turning a bunch of frames from the animation timeline into layer comps.  Originally written for [Glenn Harmon](https://www.linkedin.com/in/glenn-harmon-2445bb2/).  
 
 # Frames to PSDs
 
-A script for turning a bunch of frames from the animation timeline into individual PSD files.  User choose the destination directory.  Hidden frames are removed per PSD file.  Originally written for Andy Erekson.  
+A script for turning a bunch of frames from the animation timeline into individual PSD files.  User chooses the destination directory.  Hidden frames are removed per PSD file.  Originally written for [Andy Erekson](https://www.linkedin.com/in/andy-erekson-193a548/).  
+
+# Frames to PSD Layers
+
+A script for turning a bunch of frames from the animation timeline into individual layers. Originally written for [Andy Erekson](https://www.linkedin.com/in/andy-erekson-193a548/). 
+
+# Frames to JPGs
+
+A script for saving every frame in the animation timeline to a timelie. Originally written for [Andy Erekson](https://www.linkedin.com/in/andy-erekson-193a548/). 

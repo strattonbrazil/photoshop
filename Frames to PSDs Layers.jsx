@@ -5,7 +5,7 @@
 // BEGIN__HARVEST_EXCEPTION_ZSTRING
 
 <javascriptresource>
-<name>$$$/JavaScripts/FramesToPSDs/Menu=Frames to PSDs</name>
+<name>$$$/JavaScripts/FramesToPSDsLayers/Menu=Frames to PSDs Layers</name>
 <category>Frames</category>
 <enableinfo>true</enableinfo>
 </javascriptresource>
@@ -48,6 +48,20 @@ function deleteCurrentFrame() {
     executeAction( idDlt, desc6, DialogModes.NO );
 }
 
+function deleteHiddenLayers() {
+    // =======================================================
+    var idDlt = charIDToTypeID( "Dlt " );
+    var desc2 = new ActionDescriptor();
+    var idnull = charIDToTypeID( "null" );
+    var ref1 = new ActionReference();
+    var idLyr = charIDToTypeID( "Lyr " );
+    var idOrdn = charIDToTypeID( "Ordn" );
+    var idhidden = stringIDToTypeID( "hidden" );
+    ref1.putEnumerated( idLyr, idOrdn, idhidden );
+    desc2.putReference( idnull, ref1 );
+    executeAction( idDlt, desc2, DialogModes.NO );
+}
+
 var mainDocument = app.activeDocument;
 
 for (var i = 0; i < numFrames; i++) {
@@ -68,7 +82,7 @@ for (var i = 0; i < numFrames; i++) {
         deleteCurrentFrame();
     }
 
-    
+    deleteHiddenLayers();
 
     var outFile = new File(mainDocument.path + "/frame_" + (i+1));
     frameDocument.saveAs(outFile);
